@@ -95,26 +95,9 @@ projeto-ed/
 │   ├── superpowers/
 │   │   ├── specs/2026-07-30-rede-social-design.md  # design detalhado
 │   │   └── plans/2026-07-30-rede-social-plan.md    # plano de implementacao
-│   └── relatorio/
-│       ├── relatorio.tex   # relatorio ABNT (classe abntex2)
-│       └── Makefile        # `make pdf` compila o relatorio (requer LaTeX)
+│   └── relatorio│       
+│       └── relatorio.pdf   # relatorio 
 └── Enunciado_ProjetoFinal_Tema4.pdf
-```
-
-## Como compilar o relatório (ABNT)
-
-O relatório (`docs/relatorio/relatorio.tex`) usa a classe `abntex2`. Requer
-LaTeX instalado (não incluso neste repositório):
-
-```bash
-sudo apt-get update
-sudo apt-get install -y \
-  texlive-latex-base texlive-latex-recommended texlive-latex-extra \
-  texlive-lang-portuguese texlive-fonts-recommended texlive-publishers \
-  texlive-pictures latexmk
-
-cd docs/relatorio
-make pdf   # roda pdflatex duas vezes; gera relatorio.pdf
 ```
 
 ## Estruturas de dados exigidas → onde estão

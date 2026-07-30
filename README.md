@@ -48,6 +48,25 @@ esperado/obtido).
 make clean   # remove bin/ e obj/
 ```
 
+## Popular com dados de demonstração (seed)
+
+```bash
+bash tools/seed.sh
+```
+
+Cadastra 10 usuários, 8 amizades e 4 publicações através do próprio binário
+(ou seja, passando pelas mesmas validações de negócio, não escrevendo o
+arquivo direto). Se já existir um `rede_social.dat`, ele é renomeado para
+`rede_social.dat.bak.<timestamp>` antes de recriar — nenhum dado é perdido.
+
+O cenário foi desenhado para exercitar todas as funcionalidades de uma vez:
+um "hub" de amigos em comum (bom para ver a sugestão de amizades
+ordenada), um par de usuários isolado do resto da rede (para "verificar
+conexão" retornar não conectados), um usuário sem amigos nem publicações
+(casos vazios) e dois usuários com o mesmo nome (para a busca por nome
+retornar mais de um resultado). O script imprime ao final a lista de ids e
+sugestões de o que testar. Depois é só rodar `./bin/rede_social`.
+
 ## Estrutura do projeto
 
 ```
@@ -72,9 +91,30 @@ projeto-ed/
 │   │   test_rede_social.c                    # testes unitarios/integracao
 │   ├── smoke_test.sh                         # smoke test de persistencia
 │   └── casos_teste.md                        # roteiro de testes manuais
-└── docs/superpowers/
-    ├── specs/2026-07-30-rede-social-design.md  # design detalhado
-    └── plans/2026-07-30-rede-social-plan.md    # plano de implementacao
+├── docs/
+│   ├── superpowers/
+│   │   ├── specs/2026-07-30-rede-social-design.md  # design detalhado
+│   │   └── plans/2026-07-30-rede-social-plan.md    # plano de implementacao
+│   └── relatorio/
+│       ├── relatorio.tex   # relatorio ABNT (classe abntex2)
+│       └── Makefile        # `make pdf` compila o relatorio (requer LaTeX)
+└── Enunciado_ProjetoFinal_Tema4.pdf
+```
+
+## Como compilar o relatório (ABNT)
+
+O relatório (`docs/relatorio/relatorio.tex`) usa a classe `abntex2`. Requer
+LaTeX instalado (não incluso neste repositório):
+
+```bash
+sudo apt-get update
+sudo apt-get install -y \
+  texlive-latex-base texlive-latex-recommended texlive-latex-extra \
+  texlive-lang-portuguese texlive-fonts-recommended texlive-publishers \
+  texlive-pictures latexmk
+
+cd docs/relatorio
+make pdf   # roda pdflatex duas vezes; gera relatorio.pdf
 ```
 
 ## Estruturas de dados exigidas → onde estão
